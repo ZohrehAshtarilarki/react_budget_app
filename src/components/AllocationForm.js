@@ -8,6 +8,22 @@ const AllocationForm = (props) => {
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
 
+    // Making Budget editable by increasing its value by 10
+    const handleIncrease = () => {
+        setCost((prevCost) => {
+          const newValue = parseInt(prevCost) + 10;
+          return isNaN(newValue) ? prevCost : newValue;
+        });
+      };
+    
+      // Making Budget editable by decreasing its value by 10
+      const handleDecrease = () => {
+        setCost((prevCost) => {
+          const newValue = parseInt(prevCost) - 10;
+          return isNaN(newValue) ? prevCost : newValue;
+        });
+      };
+
     const submitEvent = () => {
         if(isNaN(cost)) {
             alert('Please enter a valid number for the cost.');
@@ -27,7 +43,7 @@ const AllocationForm = (props) => {
             name: name,
             cost: costValue,
         };
-        
+
         if(action === "Reduce") {
             dispatch({
                 type: 'RED_EXPENSE',
