@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 
 const AllocationForm = (props) => {
     const { dispatch,remaining  } = useContext(AppContext);
+     const upperLimit = 20000;
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
@@ -33,10 +34,25 @@ const AllocationForm = (props) => {
 
         const costValue = parseInt(cost);
 
+        if (costValue > upperLimit) {
+          alert(`The value cannot exceed the upper limit of £${upperLimit}.`);
+          setCost('');
+          return;
+        }
+
         if(costValue > remaining) {
-            alert("The value cannot exceed remaining funds  £"+remaining);
+            alert(`The value cannot exceed the remaining funds of £${remaining}.`);
             setCost("");
             return;
+        }
+
+        // Check if the allocated amount exceeds the budget
+        const allocatedBudget = action === 'Reduce' ? remaining + costValue : remaining - costValue;
+
+        if (allocatedBudget < 0) {
+          alert('The allocated amount cannot exceed the budget.');
+          setCost('');
+          return;
         }
 
         const expense = {
