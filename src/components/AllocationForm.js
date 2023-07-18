@@ -7,6 +7,8 @@ const AllocationForm = (props) => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [action, setAction] = useState('');
+  const [budget, setBudget] = useState(1000); // Initial budget value
+  const maxBudget = 20000; // Upper limit for the budget
 
   const submitEvent = () => {
     if (isNaN(cost)) {
@@ -54,7 +56,7 @@ const AllocationForm = (props) => {
       alert(`The value cannot exceed the remaining funds £${remaining}`);
       return;
     }
-    
+
     setCost(event.target.value);
   };
 
