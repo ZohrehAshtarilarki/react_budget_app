@@ -37,30 +37,3 @@
     transform: rotate(360deg);
   }
 }
-
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.custom-dropdown select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  font-size: 16px;
-  width: 150px;
-  cursor: pointer;
-}
-
-.dropdown-arrow {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-}

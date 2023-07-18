@@ -7,8 +7,6 @@ const AllocationForm = (props) => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [action, setAction] = useState('');
-  const [budget, setBudget] = useState(1000); // Initial budget value
-  const maxBudget = 20000; // Upper limit for the budget
 
   const submitEvent = () => {
     if (isNaN(cost)) {
@@ -84,14 +82,11 @@ const AllocationForm = (props) => {
             <option value='Finance' name='finance'>
               Finance
             </option>
-            <option value='HR' name='hr'>
+            <option value='Human Resource' name='human resource'>
               HR
             </option>
             <option value='IT' name='it'>
               IT
-            </option>
-            <option value='Admin' name='admin'>
-              Admin
             </option>
           </select>
 
