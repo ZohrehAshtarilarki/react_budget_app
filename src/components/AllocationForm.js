@@ -19,7 +19,7 @@ const AllocationForm = (props) => {
     const costValue = parseInt(cost);
 
     if (costValue > remaining) {
-      alert(`The value cannot exceed the remaining funds £${remaining}`);
+      alert(`The value cannot exceed the remaining funds ${currency}${remaining}`);
       setCost('');
       return;
     }
@@ -52,7 +52,7 @@ const AllocationForm = (props) => {
 
     const costValue = parseFloat(event.target.value);
     if (costValue > remaining) {
-      alert(`The value cannot exceed the remaining funds £${remaining}`);
+      alert(`The value cannot exceed the remaining funds ${currency}${remaining}`);
       return;
     }
 
@@ -117,7 +117,7 @@ const AllocationForm = (props) => {
             type='text'
             pattern='[0-9]+(\.[0-9]{0,2})?'
             id='cost'
-            value={cost} // Manually add the currency symbol to the cost value
+            value={cost} 
             style={{ marginLeft: '0rem' }}
             onChange={handleCostChange}
           />
