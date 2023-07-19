@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
+//import CurrencyFormat from 'react-currency-format';
 
 const AllocationForm = (props) => {
-  const { dispatch, remaining } = useContext(AppContext);
+  const { dispatch, remaining, currency } = useContext(AppContext);
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [action, setAction] = useState('');
-
+  
   const submitEvent = () => {
     if (isNaN(cost)) {
       alert('Please enter a valid number for the cost.');
@@ -109,18 +110,17 @@ const AllocationForm = (props) => {
 
           {/* Add currency prefix to the cost input field */}
           <div className='input-group-prepend' style={{ marginLeft: '2rem' }}>
-            <span className='input-group-text'>£</span>
+            <span className='input-group-text'>{currency}</span> {/* Step 3: Use the currencyPrefix state as the prefix */}
           </div>
           <input
-            required='required'
+            required
             type='text'
             pattern='[0-9]+(\.[0-9]{0,2})?'
             id='cost'
-            value={cost}
+            value={cost} // Manually add the currency symbol to the cost value
             style={{ marginLeft: '0rem' }}
             onChange={handleCostChange}
           />
-          
           {/* Save button code... */}
           <button className='btn btn-primary' onClick={submitEvent} style={{ marginLeft: '2rem' }}>
             Save

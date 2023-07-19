@@ -4,8 +4,9 @@ import { AppContext } from '../context/AppContext';
 import increaseButtonImage from './Increase_icon.png';
 import decreaseButtonImage from './Decrease_icon.png';
 
+
 const ExpenseItem = (props) => {
-    const { dispatch } = useContext(AppContext);
+    const { dispatch, currency } = useContext(AppContext);
 
     const handleDeleteExpense = () => {
         dispatch({
@@ -38,11 +39,28 @@ const ExpenseItem = (props) => {
         });
     };
 
+    const getCurrencySymbol = () => {
+        switch (currency) {
+          case '£':
+            return '£';
+          case '$':
+            return '$';
+          case '€':
+            return '€';
+          case '₹':
+            return '₹';
+          default:
+            return '';
+        }
+      };
 
     return (
         <tr>
-        <td>{props.name}</td>
-        <td>£{props.cost}</td>
+            <td>{props.name}</td>
+            <td>
+                {getCurrencySymbol()}
+                {props.cost}
+            </td>
         <td>
             <button 
                 style={{

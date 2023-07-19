@@ -5,9 +5,16 @@ const BudgetDropdown = () => {
   const { currency, dispatch } = useContext(AppContext);
 
   const handleCurrencyChange = (event) => {
+    const newCurrency = event.target.value
     dispatch({
       type: 'CHG_CURRENCY',
-      payload: event.target.value,
+      payload: newCurrency,
+    });
+
+    // Update all currency representations on the screen
+    const elementsToUpdate = document.querySelectorAll('.currency-representation');
+    elementsToUpdate.forEach((element) => {
+      element.innerHTML = newCurrency;
     });
   };
 
